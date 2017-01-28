@@ -1,0 +1,30 @@
+{
+  "name": "stockbot",
+  "version": "1.0.0",
+  "description": "Twitter bot to get stock information",
+  "main": "index.js",
+  "engines" : {
+    "node": "6.9.0"
+  },
+  "scripts": {
+    "prestart": "npm install",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mmoconnor23/stockbot"
+  },
+  "keywords": [
+    "bot",
+    "stock",
+    "market",
+    "price",
+    "change"
+  ],
+  "author": "mmoconnor23",
+  "license": "ISC",
+  "dependencies": {
+    "twit": "^2.2.5",
+    "google-stocks": "1.0.1"
+  }
+}
