@@ -27,7 +27,7 @@ userStream.on('follow', (data) => {
   let userName = data.source.screen_name;
 
   //tweet at them
-  tweetAtUser(content, userId);
+  tweetAtUser('Hi @' + userName + '! What\'s your favorite stock?', userId);
 });
 
 let statusStream = T.stream('statuses/filter', {
