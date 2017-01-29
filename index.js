@@ -77,7 +77,7 @@ statusStream.on('tweet', function (tweet) {
           }
 
           tickerData.forEach((data) => {
-            responseText.push('$' + data.t + ' $' + data.l + ' ' + data.c);
+            responseText.push('$' + data.t + ' $' + data.l + ' ' + data.c + '%');
           });
 
           tweetAtUser('@' + username + ' ' + responseText.join(', '), userId);
