@@ -26,8 +26,10 @@ userStream.on('follow', (data) => {
   let userId = data.source.id;
   let userName = data.source.screen_name;
 
-  //tweet at them
-  tweetAtUser('Hi @' + userName + '! What\'s your favorite stock?', userId);
+  //tweet at them (if it's not the action of me following someone!)
+  if (userName.toLowerCase() !== myHandle) {
+    tweetAtUser('Hi @' + userName + '! What\'s your favorite stock?', userId);
+  }
 });
 
 let statusStream = T.stream('statuses/filter', {
@@ -66,7 +68,8 @@ statusStream.on('tweet', function (tweet) {
           ticker = ticker.trim();
 
           if (ticker.startsWith('$')) {
-            validTickers.push(ticker.substr(1));
+            //replace invalid characters, including the leading $
+            validTickers.push(ticker.replace(/[^a-zA-Z0-9]/g, ''));
           }
         });
 
