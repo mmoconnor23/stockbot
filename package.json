@@ -4,7 +4,7 @@
   "description": "Twitter bot to get stock information",
   "main": "index.js",
   "engines" : {
-    "node": "6.9.0"
+    "node": "6.11.1"
   },
   "scripts": {
     "prestart": "npm install",
