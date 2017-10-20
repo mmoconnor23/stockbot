@@ -1,7 +1,7 @@
 'use strict';
 
 const Twit = require('twit');
-const googleStocks = require('google-stocks');
+const markitondemand = require('markitondemand');
 
 const myHandle = 'financestockbot';
 
@@ -74,17 +74,19 @@ statusStream.on('tweet', function (tweet) {
         });
 
         // console.log('querying API for stock data');
-        googleStocks(validTickers, (err, tickerData) => {
-          if (err) {
-            console.log('error getting stock data');
-          }
+        markitondemand.getQuotes(validTickers)
+          .then((tickerData) => {
+            tickerData.forEach((data) => {
+              responseText.push('$' + data.Symbol + ' $' + data.LastPrice + ' ' + data.ChangePercent + '%');
+            });
 
-          tickerData.forEach((data) => {
-            responseText.push('$' + data.t + ' $' + data.l + ' ' + data.c + '%');
+            tweetAtUser('@' + username + ' ' + responseText.join(', '), userId);
+          })
+          .catch((err) => {
+            if (err) {
+              console.log('error getting stock data');
+            }
           });
-
-          tweetAtUser('@' + username + ' ' + responseText.join(', '), userId);
-        });
       } else {
         // console.log('nope, they don\'t follow me');
         tweetAtUser('@' + username + ', please follow me for stock info!', userId);

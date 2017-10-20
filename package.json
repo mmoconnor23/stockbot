@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Twitter bot to get stock information",
   "main": "index.js",
-  "engines" : {
+  "engines": {
     "node": "6.11.1"
   },
   "scripts": {
@@ -24,7 +24,8 @@
   "author": "mmoconnor23",
   "license": "ISC",
   "dependencies": {
-    "twit": "^2.2.5",
-    "google-stocks": "1.0.1"
+    "google-stocks": "1.0.1",
+    "markitondemand": "^1.0.3",
+    "twit": "^2.2.5"
   }
 }
