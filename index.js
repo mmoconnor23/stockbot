@@ -77,7 +77,8 @@ statusStream.on('tweet', function (tweet) {
         markitondemand.getQuotes(validTickers)
           .then((tickerData) => {
             tickerData.forEach((data) => {
-              responseText.push('$' + data.Symbol + ' $' + data.LastPrice + ' ' + data.ChangePercent + '%');
+              const roundedChange = Math.round(data.ChangePercent*100)/100;
+              responseText.push('$' + data.Symbol + ' $' + data.LastPrice + ' ' + roundedChange + '%');
             });
 
             tweetAtUser('@' + username + ' ' + responseText.join(', '), userId);
